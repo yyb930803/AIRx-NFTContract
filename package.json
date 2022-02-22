@@ -1,0 +1,50 @@
+{
+  "name": "contract",
+  "version": "1.0.0",
+  "description": "",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "ganache": "npx ganache-cli",
+    "lint": "yarn prettier ./test/*.ts --check",
+    "lint:fix": "yarn prettier ./test/*.ts --write",
+    "clean": "rimraf ./build/",
+    "precompile": "yarn clean",
+    "compile": "waffle .waffle.json",
+    "compile:truffle": "truffle compile",
+    "migrate:testnet": "truffle migrate --reset --network testnet",
+    "migrate:mumbai": "truffle migrate --network mumbai",
+    "migrate:dev": "truffle migrate --reset --network development",
+    "verify:testnet": "truffle run verify Factory --network testnet",
+    "flatten": "truffle-flattener ./contracts/Factory.sol --output ./contract_flatten/Factory_flat.sol",
+    "pretest": "yarn compile",
+    "test": "mocha",
+    "prepublishOnly": "yarn test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/monkeyMax-SVG/AIRx-NFTContract.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/monkeyMax-SVG/AIRx-NFTContract/issues"
+  },
+  "homepage": "https://github.com/monkeyMax-SVG/AIRx-NFTContract#readme",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.3.2",
+    "@truffle/hdwallet-provider": "^1.5.1",
+    "dotenv": "^10.0.0",
+    "truffle-plugin-verify": "^0.5.15"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.22",
+    "@types/mocha": "^9.0.0",
+    "chai": "^4.3.4",
+    "chai-as-promised": "^7.1.1",
+    "chai-bn": "^0.3.0"
+  }
+}
